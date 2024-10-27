@@ -13,83 +13,29 @@ import {
   SidebarGroupAction,
 } from "@/components/ui/sidebar";
 import { Button } from "./ui/button";
+import Appdialog from "./Appdialog";
+import { useState } from "react";
 
-// Menu items.
-const items = [
-  {
-    title: "Home",
-    url: "#",
-    icon: Home,
-  },
-  {
-    title: "Inbox",
-    url: "#",
-    icon: Inbox,
-  },
-  {
-    title: "Calendar",
-    url: "#",
-    icon: Calendar,
-  },
-  {
-    title: "Search",
-    url: "#",
-    icon: Search,
-  },
-  {
-    title: "Settings",
-    url: "#",
-    icon: Settings,
-  },
-];
+export function AppSidebar({ projects, handleDialogToggle }) {
 
-const projects = [
-  {
-    title: "Make a rocket",
-  },
-  {
-    title: "Buy an apple",
-  },
-  {
-    title: "Make a house",
-  },
-];
-
-export function AppSidebar() {
   return (
     <Sidebar variant="floating">
       <SidebarContent>
-        <SidebarGroup>
-          <SidebarGroupLabel>Application</SidebarGroupLabel>
-          <SidebarGroupContent>
-            <SidebarMenu>
-              {items.map((item) => (
-                <SidebarMenuItem key={item.title}>
-                  <SidebarMenuButton asChild>
-                    <a href={item.url}>
-                      <item.icon />
-                      <span>{item.title}</span>
-                    </a>
-                  </SidebarMenuButton>
-                </SidebarMenuItem>
-              ))}
-            </SidebarMenu>
-          </SidebarGroupContent>
-        </SidebarGroup>
         <SidebarGroup>
           <SidebarGroupLabel>Projects</SidebarGroupLabel>
           <SidebarGroupAction
             title="Add Project"
             className="flex justify-center"
+            onClick = {handleDialogToggle}
           >
             <FontAwesomeIcon icon={faPlus} />
           </SidebarGroupAction>
           <SidebarGroupContent>
             <SidebarMenu>
               {projects.map((project) => (
-                <SidebarMenuItem key={project.title}>
+                <SidebarMenuItem key={project.name}>
                   <SidebarMenuButton asChild className="cursor-pointer">
-                    <span>{project.title}</span>
+                    <span>{project.name}</span>
                   </SidebarMenuButton>
                 </SidebarMenuItem>
               ))}
@@ -98,5 +44,6 @@ export function AppSidebar() {
         </SidebarGroup>
       </SidebarContent>
     </Sidebar>
+    
   );
 }
