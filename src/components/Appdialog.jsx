@@ -25,7 +25,7 @@ const Appdialog = ({ isDialogOpen, setIsDialogOpen, addProject }) => {
     <Dialog open={isDialogOpen} onOpenChange={setIsDialogOpen}>
       <DialogContent>
         <DialogHeader>
-          <DialogTitle>Add a new Project</DialogTitle>
+          <DialogTitle className="my-2">Add a new Project</DialogTitle>
           <DialogDescription>Enter details for your project</DialogDescription>
         </DialogHeader>
         <form onSubmit={handleSubmit}>
@@ -36,10 +36,13 @@ const Appdialog = ({ isDialogOpen, setIsDialogOpen, addProject }) => {
               id="projectName"
               value={projectName}
               onChange={(e) => setProjectName(e.target.value)}
+              className="my-3"
             />
           </div>
-          <DialogFooter>
-            <Button type="submit">Save</Button>
+          <DialogFooter className="p-5">
+            <Button type="submit" className="px-7 mr-auto ml-auto">
+              Save
+            </Button>
           </DialogFooter>
         </form>
       </DialogContent>
