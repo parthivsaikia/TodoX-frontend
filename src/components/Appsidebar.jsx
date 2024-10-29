@@ -21,8 +21,10 @@ export function AppSidebar({
   projects,
   handleDialogToggle,
   setIsHomePageOpen,
+  selectedProject,
+  setSelectedProject
 }) {
-  const [selectedProject, setSelectedProject] = useState(projects[0]);
+
   const handleHomePageOpen = () => {
     setIsHomePageOpen(true);
   };

@@ -9,6 +9,7 @@ import { AppSidebar } from "./components/Appsidebar";
 import { create, getAll } from "./services/project";
 import Appdialog from "./components/Appdialog";
 import Maincomponent from "./components/Maincomponent";
+import Project from "./components/Project";
 
 const App = () => {
   const [projects, setProjects] = useState([]);
@@ -37,6 +38,7 @@ const App = () => {
   };
 
   const [isHomePageOpen, setIsHomePageOpen] = useState(true);
+  const [selectedProject , setSelectedProject] = useState(projects[0])
 
   return (
     <div className="flex h-screen">
@@ -45,11 +47,13 @@ const App = () => {
           projects={projects}
           handleDialogToggle={handleDialogToggle}
           setIsHomePageOpen={setIsHomePageOpen}
+          selectedProject={selectedProject}
+          setSelectedProject={setSelectedProject}
         />
         <main className="flex-1 p-4">
           <SidebarTrigger />
           {isHomePageOpen && <Maincomponent />}
-          {!isHomePageOpen && <h1>hii</h1>}
+          {!isHomePageOpen && <Project project={selectedProject}/>}
         </main>
       </SidebarProvider>
       {isDialogOpen && (
